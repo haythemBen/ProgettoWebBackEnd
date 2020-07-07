@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1384bdc3-8a19-4e81-9f6d-e9dad11b52b5" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1SCjn0KhIB5TGdo0f4n6uw65dnM" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../react-unimore" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1384bdc3-8a19-4e81-9f6d-e9dad11b52b5" name="Default Changelist" comment="" />
+      <created>1571074634810</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1571074634810</updated>
+      <workItem from="1571074636664" duration="9416000" />
+      <workItem from="1571155566502" duration="57357000" />
+      <workItem from="1571379974062" duration="741000" />
+      <workItem from="1571400661729" duration="31000" />
+      <workItem from="1571404126665" duration="189000" />
+      <workItem from="1571487070285" duration="21000" />
+      <workItem from="1571487123565" duration="1473000" />
+      <workItem from="1571943744920" duration="656000" />
+      <workItem from="1571987401806" duration="14378000" />
+      <workItem from="1572512577857" duration="1715000" />
+      <workItem from="1572524799725" duration="1264000" />
+      <workItem from="1572527083567" duration="6287000" />
+      <workItem from="1572540597820" duration="12475000" />
+      <workItem from="1572641244971" duration="10733000" />
+      <workItem from="1573288366522" duration="8814000" />
+      <workItem from="1573308329699" duration="4156000" />
+      <workItem from="1573330365900" duration="3318000" />
+      <workItem from="1573372472635" duration="17917000" />
+      <workItem from="1573815572864" duration="2000" />
+      <workItem from="1574977800384" duration="420000" />
+      <workItem from="1575035064009" duration="108000" />
+      <workItem from="1575038246736" duration="670000" />
+      <workItem from="1575111612007" duration="1484000" />
+      <workItem from="1575468250419" duration="942000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>
