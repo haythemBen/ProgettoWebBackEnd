@@ -15,12 +15,12 @@ dotenv.config();
 exports.signup = async (req, res) => {
     const userExists = await User.findOne({email : req.body.email});
     if (userExists) return res.status(403).json({
-        error : "email existed"
+        error : "email esistita"
     });
     const user = await new User(req.body);
     await user.save();
     res.status(200).json({
-        message : "Sign up success please login "
+        message : "Iscriviti con successo per favore accedi"
     });
 };
 
@@ -32,13 +32,13 @@ exports.signin = async (req, res) => {
     User.findOne({email}, (err, user) => { // if success : we get the user else get error
         if (err || !user){
             return res.status(401).json({
-                error : "No account with this Email, Please sign in"
+                error : "No account with this Email, Per favore accedi"
             });
         }
         // create autenticate method in model and use here : verify if the input password when encrypt it with user salt is equal to hashed password 
         if(!user.authenticate(password)){
             return res.status(401).json({
-                error : "Email and password are not match"
+                error : "Email e password non corrispondono"
             });
         }
 
@@ -64,7 +64,7 @@ exports.signin = async (req, res) => {
 
 exports.signout = async (req, res) => {
     res.clearCookie("t");
-    return res.json({message : "Sign out success"});
+    return res.json({message : "disconnessione con successo"});
 };
 
 // require signin to see the posts for example. using the secret key in .env
@@ -79,9 +79,9 @@ exports.requireSignin = expressJwt({
 
 // add forgotPassword and resetPassword methods
 exports.forgotPassword = (req, res) => {
-    if (!req.body) return res.status(400).json({ error: "No request body" });
+    if (!req.body) return res.status(400).json({ error: "Nessuna richiesta body" });
     if (!req.body.email)
-        return res.json({ error: "No Email in request body" });
+        return res.json({ error: "Nessuna e-mail nel corpo della richiesta" });
 
     console.log("forgot password finding user with that email");
     const { email } = req.body;
@@ -90,7 +90,7 @@ exports.forgotPassword = (req, res) => {
     User.findOne({ email }, (err, user) => {
         if (err || !user)
             return res.status("401").json({
-                error: "User with that email does not exist!"
+                error: "L'utente con quell'email non esiste!"
             });
 
         // generate a token with user id and secret
@@ -104,10 +104,10 @@ exports.forgotPassword = (req, res) => {
             from: "noreply@node-react.com",
             to: email,
             subject: "Social network - Password Reset Instructions",
-            text: `Please use the following link to reset your password: ${
+            text: `Si prega di utilizzare il seguente link per reimpostare la password: ${
                 process.env.CLIENT_URL
             }/reset-password/${token}`,
-            html: `<p>Please use the following link to reset your password:</p> <p>${
+            html: `<p>Si prega di utilizzare il seguente link per reimpostare la password:</p> <p>${
                 process.env.CLIENT_URL
             }/reset-password/${token}</p>`
         };
@@ -118,7 +118,7 @@ exports.forgotPassword = (req, res) => {
             } else {
                 sendEmail(emailData);
                 return res.status(200).json({
-                    message: `Email has been sent to ${email}. Follow the instructions to reset your password.`
+                    message: `L'email è stata inviata a ${email}. Segui le istruzioni per reimpostare la tua password .`
                 });
             }
         });
@@ -138,7 +138,7 @@ exports.resetPassword = (req, res) => {
         // if err or no user
         if (err || !user)
             return res.status(401).json({
-                error: "Invalid Link!"
+                error: "link non valido !"
             });
 
         const updatedFields = {
@@ -156,7 +156,7 @@ exports.resetPassword = (req, res) => {
                 });
             }
             res.json({
-                message: `Password reset operation finished successfully.`
+                message: `Operazione di reimpostazione della password completata correttamente.`
             });
         });
     });

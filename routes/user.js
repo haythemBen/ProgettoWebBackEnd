@@ -17,7 +17,6 @@ router.delete('/user/:userId',requireSignin, deleteUser);
 // caricamento foto: creo un percorso separato per il caricamento
 router.get("/user/photo/:userId", userPhoto);
 
-
 // chi seguire
 router.get('/user/findpeople/:userId',requireSignin, findPeople);
 

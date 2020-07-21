@@ -35,14 +35,6 @@ router.get("/posts/by/:userId", postsByUser);
 // photo
 router.get("/post/photo/:postId", photo);
 
-
-
-
-
-
-
-
-
 // any route (any request) containing userId , our app will first execute userById()
 router.param("userId", userById);
 router.param("postId", postById);

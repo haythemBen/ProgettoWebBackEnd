@@ -64,12 +64,12 @@ app.use("/",userRoutes);
 // handel error : whenever the user receive UnauthorizedError send this response
 app.use(function (err, req, res, next) {
 	if (err.name === 'UnauthorizedError') {
-		res.status(401).json({error : 'Unauthorised - invalid token'});
+		res.status(401).json({error : 'Unauthorised - token non valido'});
 	}
 });
 //8080 is defult value
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
-	console.log('A node api is  listenig p  on port :${port}');
+	console.log('Il nodo API sta ascoltando sul porto :${port}');
 
 });

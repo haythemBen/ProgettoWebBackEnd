@@ -13,7 +13,7 @@ exports.userById= (req, res, next, id) => {
         .exec((err, user) => {
         if (err|| !user){
             return res.status(400).json({
-                error : "User not found"
+                error : "Utente non trovato"
             });
         }
         req.profile = user ; // return user object to the request as the name of "profile"
@@ -28,7 +28,7 @@ exports.hasAuthorisation = (req, res, next) => {
     const authorised = req.profile && req.auth && req.profile._id === req.auth._id ;
     if(!authorised){
         res.status(403).json({
-            error : "User is not authorised to perform this action"
+            error : "L'utente non è autorizzato a eseguire questa azione"
         });
     }
 };
@@ -56,24 +56,6 @@ exports.getUser = (req, res) => {
     return res.json(req.profile) ;
 };
 
-// without profile picture , using json format
-/*
-exports.updateUser = (req, res,next) => {
-    let user = req.profile;
-    user = _.extend(user, req.body);  // extend - mutate the source object : apply changes in req.body in the source object:user
-    user.updated = Date.now();
-    user.save((err) => {
-        if(err){
-            return res.status(400).json({
-                error : "You are not authorised to perform this action"
-            })
-        }
-        user.hashed_password = undefined;
-        user.salt = undefined;
-        res.json({user});
-    });
-};
- */
 
 
 exports.updateUser = (req, res,next) => {
@@ -81,7 +63,7 @@ exports.updateUser = (req, res,next) => {
     form.keepExtensions = true ;
     form.parse(req,(err, fields, files) =>{            // the second parameter is how to handle incoming data : use callback function
         if (err) {return res.status(400).json({
-            error : "node - updateUser -> error while uploading"
+            error : "node - updateUser -> errore durante il caricamento"
             })
         }
         // save the updates
@@ -97,7 +79,7 @@ exports.updateUser = (req, res,next) => {
         user.save((err, result) => {
             if (err){
                 return res.status(400).json({
-                    error : "node - updateUser -> error while saving :",err
+                    error : "node - updateUser -> errore durante il salvataggio:",err
                 })
             }
 
@@ -129,7 +111,7 @@ exports.deleteUser = (req, res,next) => {
         }
         req.profile.hashed_password = undefined;
         req.profile.salt = undefined;
-        return res.json({message : "user deleted"}) ;
+        return res.json({message : "utente eliminato"}) ;
 
     })
 

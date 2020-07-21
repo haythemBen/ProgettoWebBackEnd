@@ -1,14 +1,14 @@
 exports.createPostValidator = (req, res , next) => {
     // title verification
-    req.check('title', "write a title").notEmpty()
-    req.check('title', "title must be between 4 and 150").isLength({
+    req.check('title', "scrivi un titolo").notEmpty()
+    req.check('title', "il titolo deve essere compreso tra 4 e 150 caratteri").isLength({
         min : 4,
         max : 150
         });
 
     // body verification
-    req.check('body', "write a title").notEmpty()
-    req.check('body', "body must be between 4 and 4000").isLength({
+    req.check('body', "scrivi un body").notEmpty()
+    req.check('body', "il body deve essere compreso tra 4 e 2000 caratteri").isLength({
     min : 4,
     max : 2000
     });
@@ -28,23 +28,23 @@ exports.createPostValidator = (req, res , next) => {
 
 exports.userSignupValidator = (req, res, next) =>  {
     // name is not null and length 4-10 characters
-    req.check("name","Name is required").notEmpty();
+    req.check("name","Nome richiesto").notEmpty();
     // email is not null , valid and normalized
-    req.check("email","Email must be between 3 and 32 chars")
+    req.check("email","L'email deve essere compresa tra 3 e 32 caratteri")
         .matches(/.+\@.+\..+/) // regular pattern
-        .withMessage("Email must contain @")
+        .withMessage("L'email deve contenere @")
         .isLength({
             min : 4,
             max : 2000
         });
 
     // check for password
-    req.check("password","Password is required").notEmpty();
+    req.check("password","E 'richiesta la password").notEmpty();
     req.check("password")
         .isLength({min: 6})
-        .withMessage("Password must contain at least 6 chars")
+        .withMessage("La password deve contenere almeno 6 caratteri")
         .matches(/\d/) // at least 1 number
-        .withMessage("Password must contain 1 number");
+        .withMessage("La password deve contenere 1 numero");
 
 
 
@@ -65,13 +65,13 @@ exports.userSignupValidator = (req, res, next) =>  {
 
 exports.passwordResetValidator = (req, res, next) => {
     // check for password
-    req.check("newPassword", "Password is required").notEmpty();
+    req.check("newPassword", "E 'richiesta la password").notEmpty();
     req.check("newPassword")
         .isLength({ min: 6 })
-        .withMessage("Password must be at least 6 chars long")
+        .withMessage("La password deve contenere almeno 6 caratteri")
         .matches(/\d/)
-        .withMessage("must contain a number")
-        .withMessage("Password must contain a number");
+        .withMessage("deve contenere 1 numero")
+        .withMessage("La password deve contenere 1 numero");
 
     // check for errors
     const errors = req.validationErrors();

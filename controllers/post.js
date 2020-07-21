@@ -26,37 +26,6 @@ exports.getPosts = (req, res) => {
 
 };
 
-/*
-
-// getPosts with pagination
-exports.getPosts = async (req, res) => {
-	// get current page from req.query or use default value of 1
-	const currentPage = req.query.page || 1;
-	// return 3 posts per page
-	const perPage = 3;
-	let totalItems;
- 
-	const posts = await Post.find()
-		// countDocuments() gives the total count of posts
-		.countDocuments()
-		.then(count => {
-			totalItems = count;
-			return Post.find()
-				.skip((currentPage - 1) * perPage)
-				.populate("comments", "text created")
-				.populate("comments.postedBy", "_id name")
-				.populate("postedBy", "_id name")
-				.sort({ date: -1 })
-				.limit(perPage)
-				.select("_id title body likes");
-		})
-		.then(posts => {
-			res.status(200).json(posts);
-		})
-		.catch(err => console.log(err));
-};
-*/
-
 exports.postById = (req, res, next, id) => {
 	Post.findById(id)
 	  .populate("postedBy", "_id name")
@@ -88,7 +57,7 @@ exports.createPost = (req, res, next) => {
 	form.parse(req , (err, fields, files) => {
 		if(err){
 			return res.status(400).json({
-				err : "Image could not be uploaded"
+				err : "L'immagine non può essere caricata"
 			});
 		}
 
@@ -104,7 +73,7 @@ exports.createPost = (req, res, next) => {
 		post.save((err, result)=>{
 			if(err) {
 				return res.status(400).json({
-					err: "Error while saving the post"
+					err: "Errore durante il salvataggio del post"
 				});
 			}
 			res.json(result) ;
@@ -162,35 +131,18 @@ exports.isPoster = (req, res, next) => {
 
 	if(!isPoster){
 		return res.status(400).json({
-			error : "User non authorised to make this action"
+			error : "Utente non autorizzato a eseguire questa azione"
 		});
 	}
 	next();
 };
-
-/*
-exports.updatePost = (req, res,next) => {
-	let post = req.post;
-	post = _.extend(post, req.body);  // extend - mutate the source object : apply changes in req.body in the source object:user
-	post.updated = Date.now();
-	post.save(err => {
-		if(err){
-			return res.status(400).json({
-				error : err
-			});
-		}
-		res.json(post);
-	});
-};
-*/
-
 
 exports.updatePost = (req, res,next) => {
 	let form = new formidable.IncomingForm();
 	form.keepExtensions = true ;
 	form.parse(req,(err, fields, files) =>{            // the second parameter is how to handle incoming data : use callback function
 		if (err) {return res.status(400).json({
-			error : "node - updateUser -> error while uploading"
+			error : "node - updateUser -> errore durante il caricamento"
 		})
 		}
 		// save the updates
@@ -206,7 +158,7 @@ exports.updatePost = (req, res,next) => {
 		post.save((err, result) => {
 			if (err){
 				return res.status(400).json({
-					error : "node - updateUser -> error while saving :",err
+					error : "node - updateUser -> errore durante il salvataggio :",err
 				})
 			}
 
@@ -232,7 +184,7 @@ exports.deletePost = (req, res, next) => {
 			});
 		}
 		res.json({
-			message : "Post removed successfully"
+			message : "Post rimosso correttamente"
 		});
 	});
 };
@@ -272,23 +224,6 @@ exports.unlike = (req, res) => {
 	);
 };
 
-
-/*
-
-exports.like = (req, res) => {
-	// push is mongoose method
-	Post.findByIdAndUpdate(req.body.postId , { $push : { likes: req.body.userId }}, {new : true}).exec(
-		(err, result)=> {
-		if(error){                      it is the error 6 hours blocked here :/ write if(err) not error
-			return res.status(400).json({error : err});
-		}
-		else {
-			res.json(result) ;
-		}
-	}
-	);
-};
-*/
 
 exports.comment = (req, res) => {
 	let comment = req.body.comment ;
