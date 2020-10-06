@@ -70,7 +70,8 @@ userSchema
         // generate timestamp (key)  using uuid package (line 2)
         this.salt = uuidv1();
         // encrypt the password using the generated timestamp
-        this.hashed_password = this.encryptPassword(password);
+        this.hashed_password = this.encryptPassword(password); //per fare il hash alla password
+        //this.hashed_password = password
 
 
     })
@@ -83,17 +84,19 @@ userSchema
 userSchema.methods = {
     authenticate: function(plainText){
        return this.encryptPassword(plainText) === this.hashed_password ;
+       //return this.plainText === this.hashed_password;
     },
 
     encryptPassword : function (password) {
-        if (!password) return "";
-        try {
-           return crypto.createHmac('sha1', this.salt)
-               .update(password)
-               .digest('hex'); // hexadecimal
-        } catch (err){
-            return "";
-        }
+        // if (!password) return "";
+        // try {
+        //    return crypto.createHmac('sha1', this.salt)
+        //        .update(password)
+        //        .digest('hex'); // hexadecimal
+        // } catch (err){
+        //     return "";
+        // }
+        return password
 
     }
 };
